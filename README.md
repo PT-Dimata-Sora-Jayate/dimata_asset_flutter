@@ -47,10 +47,10 @@ Add this to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  company_assets:
+  dimata_assets:
     git:
-      url: https://github.com/nama-perusahaan/company-assets.git
-      ref: main  # atau branch/tag spesifik
+      url: https://github.com/PT-Dimata-Sora-Jayate/dimata_asset_flutter.git
+      ref: main # atau branch/tag spesifik
 ```
 
 ## Components
@@ -58,9 +58,11 @@ dependencies:
 ### DimataColors
 
 A utility class that provides a consistent color palette for your application.
+
 # DimataColors
 
 Kelas helper untuk manajemen warna yang fleksibel dalam aplikasi Flutter. Memungkinkan pengembang untuk menggunakan warna default atau mengkonfigurasi skema warna secara dinamis.
+Warna primary secara otomatis akan menggunakan warna dark dan light
 
 ## Fitur
 
@@ -94,7 +96,7 @@ void main() {
     background: Color(0xFFEEEEEE),
     // Warna lain tetap default
   );
-  
+
   runApp(MyApp());
 }
 ```
@@ -111,24 +113,29 @@ void resetTheme() {
 ## Warna yang Tersedia
 
 ### Warna Primer
+
 - `primary` - Warna utama aplikasi
 - `primaryLight` - Variasi terang dari warna primer
 - `primaryDark` - Variasi gelap dari warna primer
 
 ### Warna Sekunder
+
 - `secondary` - Warna sekunder untuk aksen
 - `secondaryLight` - Variasi terang dari warna sekunder
 - `secondaryDark` - Variasi gelap dari warna sekunder
 
 ### Warna Aksen
+
 - `accent` - Warna untuk penekanan elemen tertentu
 
 ### Warna Netral
+
 - `background` - Warna latar belakang umum
 - `surface` - Warna untuk permukaan komponen
 - `error` - Warna untuk indikasi kesalahan
 
 ### Warna Teks
+
 - `textPrimary` - Warna utama untuk teks
 - `textSecondary` - Warna sekunder untuk teks (kurang penting)
 - `textDisabled` - Warna untuk teks yang dinonaktifkan
@@ -157,6 +164,7 @@ DimataFonts.button()     // 14px, medium, Montserrat
 ```
 
 Each method accepts optional parameters:
+
 - `color`: Custom text color
 - `fontWeight`: Custom font weight
 - `fontFamily`: Custom font family

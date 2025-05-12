@@ -8,88 +8,114 @@ import 'package:google_fonts/google_fonts.dart';
 class DimataThemes {
   // Private constructor untuk mencegah instantiasi
   DimataThemes._();
-  
+
   /// Membuat tema light dengan opsi kustomisasi
   static ThemeData light({
-    // Color? primaryColor,
-    // Color? secondaryColor,
     String? primaryFontFamily,
     String? secondaryFontFamily,
     ColorScheme? colorScheme,
   }) {
-    // Gunakan warna default jika tidak disediakan
-    final primary =  DimataColors().primaryLight;
-    final secondary =  DimataColors().secondary;
+    final colors = DimataColors();
 
-    DimataColors().configPrimaryColor(primary);
-    
     // Buat MaterialColor dari warna primer
     final primarySwatch = MaterialColor(
-      primary.value,
+      colors.primaryLight.value,
       <int, Color>{
-        50: primary.withOpacity(0.1),
-        100: primary.withOpacity(0.2),
-        200: primary.withOpacity(0.3),
-        300: primary.withOpacity(0.4),
-        400: primary.withOpacity(0.5),
-        500: primary,
-        600: primary.withOpacity(0.7),
-        700: primary.withOpacity(0.8),
-        800: primary.withOpacity(0.9),
-        900: primary,
+        50: colors.primaryLight.withOpacity(0.1),
+        100: colors.primaryLight.withOpacity(0.2),
+        200: colors.primaryLight.withOpacity(0.3),
+        300: colors.primaryLight.withOpacity(0.4),
+        400: colors.primaryLight.withOpacity(0.5),
+        500: colors.primaryLight,
+        600: colors.primaryLight.withOpacity(0.7),
+        700: colors.primaryLight.withOpacity(0.8),
+        800: colors.primaryLight.withOpacity(0.9),
+        900: colors.primaryLight,
       },
     );
-    
+
     return ThemeData(
+      brightness: Brightness.light,
       primarySwatch: primarySwatch,
-      primaryColor: primary,
-      colorScheme: colorScheme ?? ColorScheme.light(
-        primary: primary,
-        primaryContainer: primary.withOpacity(0.5),
-        secondary: secondary,
-        secondaryContainer: secondary.withOpacity(0.5),
-        surface: DimataColors().surface,
-        error: DimataColors().error,
-      ),
-      scaffoldBackgroundColor: DimataColors().surface,
+      primaryColor: colors.primaryLight,
+      colorScheme: colorScheme ??
+          ColorScheme.light(
+            primary: colors.primaryLight,
+            primaryContainer: colors.primaryLight.withOpacity(0.2),
+            secondary: colors.secondaryLight,
+            secondaryContainer: colors.secondaryLightVariant,
+            surface: colors.surfaceLight,
+            background: colors.backgroundLight,
+            error: colors.errorLight,
+            onPrimary: Colors.white,
+            onSecondary: Colors.white,
+            onSurface: colors.textPrimaryLight,
+            onBackground: colors.textPrimaryLight,
+            onError: Colors.white,
+          ),
+      scaffoldBackgroundColor: colors.backgroundLight,
       fontFamily: GoogleFonts.openSans().fontFamily,
       textTheme: TextTheme(
         displayLarge: DimataFonts.heading1(
           fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: colors.textPrimaryLight,
         ),
         displayMedium: DimataFonts.heading2(
           fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: colors.textPrimaryLight,
         ),
         displaySmall: DimataFonts.heading3(
           fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: colors.textPrimaryLight,
+        ),
+        headlineMedium: DimataFonts.heading4(
+          fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: colors.textPrimaryLight,
+        ),
+        headlineSmall: DimataFonts.heading5(
+          fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: colors.textPrimaryLight,
+        ),
+        titleLarge: DimataFonts.heading6(
+          fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: colors.textPrimaryLight,
         ),
         bodyLarge: DimataFonts.bodyLarge(
           fontFamily: secondaryFontFamily ?? 'Open Sans',
+          color: colors.textPrimaryLight,
         ),
         bodyMedium: DimataFonts.bodyMedium(
           fontFamily: secondaryFontFamily ?? 'Open Sans',
+          color: colors.textPrimaryLight,
         ),
         bodySmall: DimataFonts.bodySmall(
           fontFamily: secondaryFontFamily ?? 'Open Sans',
+          color: colors.textSecondaryLight,
         ),
         labelLarge: DimataFonts.button(
           fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: Colors.white,
+        ),
+        labelMedium: DimataFonts.buttonSmall(
+          fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: Colors.white,
         ),
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: primary,
+        backgroundColor: colors.primaryLight,
         foregroundColor: Colors.white,
-        elevation: 0,
+        elevation: 1,
         centerTitle: true,
-        titleTextStyle: DimataFonts.heading3(
+        titleTextStyle: DimataFonts.heading6(
           color: Colors.white,
           fontFamily: primaryFontFamily ?? 'Montserrat',
         ),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
-          backgroundColor: primary,
+          backgroundColor: colors.primaryLight,
           textStyle: DimataFonts.button(
             fontFamily: primaryFontFamily ?? 'Montserrat',
           ),
@@ -102,74 +128,198 @@ class DimataThemes {
           ),
         ),
       ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: colors.primaryLight,
+          textStyle: DimataFonts.button(
+            fontFamily: primaryFontFamily ?? 'Montserrat',
+          ),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: colors.primaryLight,
+          textStyle: DimataFonts.button(
+            fontFamily: primaryFontFamily ?? 'Montserrat',
+          ),
+          side: BorderSide(color: colors.primaryLight),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 12,
+          ),
+        ),
+      ),
+      cardTheme: CardTheme(
+        color: colors.surfaceLight,
+        elevation: 1,
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      dividerTheme: DividerThemeData(
+        color: colors.textDisabledLight.withOpacity(0.2),
+        thickness: 1,
+        space: 1,
+      ),
     );
   }
-  
+
   /// Membuat tema dark dengan opsi kustomisasi
   static ThemeData dark({
-    // Color? primaryColor,
-    // Color? secondaryColor,
     String? primaryFontFamily,
     String? secondaryFontFamily,
     ColorScheme? colorScheme,
   }) {
-    // Gunakan warna default jika tidak disediakan
-    final primary =  DimataColors().primaryDark;
-    final secondary = DimataColors().secondary;
-  
-    DimataColors().configPrimaryColor(primary);
-    
-    return ThemeData.dark().copyWith(
-      primaryColor: primary,
-      colorScheme: colorScheme ?? ColorScheme.dark(
-        primary: primary,
-        primaryContainer: primary.withOpacity(0.5),
-        secondary: secondary,
-        secondaryContainer: secondary.withOpacity(0.5),
-        surface: const Color(0xFF121212),
-        error: DimataColors().error,
-      ),
-      scaffoldBackgroundColor: const Color(0xFF121212),
+    final colors = DimataColors();
+
+    return ThemeData(
+      brightness: Brightness.dark,
+      primaryColor: colors.primaryDark,
+      colorScheme: colorScheme ??
+          ColorScheme.dark(
+            primary: colors.primaryDark,
+            primaryContainer: colors.primaryDark.withOpacity(0.2),
+            secondary: colors.secondaryDark,
+            secondaryContainer: colors.secondaryDarkVariant,
+            surface: colors.surfaceDark,
+            background: colors.backgroundDark,
+            error: colors.errorDark,
+            onPrimary: Colors.white,
+            onSecondary: Colors.white,
+            onSurface: colors.textPrimaryDark,
+            onBackground: colors.textPrimaryDark,
+            onError: Colors.white,
+          ),
+      scaffoldBackgroundColor: colors.backgroundDark,
+      fontFamily: GoogleFonts.openSans().fontFamily,
       textTheme: TextTheme(
         displayLarge: DimataFonts.heading1(
           fontFamily: primaryFontFamily ?? 'Montserrat',
-          color: Colors.white,
+          color: colors.textPrimaryDark,
         ),
         displayMedium: DimataFonts.heading2(
           fontFamily: primaryFontFamily ?? 'Montserrat',
-          color: Colors.white,
+          color: colors.textPrimaryDark,
         ),
         displaySmall: DimataFonts.heading3(
           fontFamily: primaryFontFamily ?? 'Montserrat',
-          color: Colors.white,
+          color: colors.textPrimaryDark,
+        ),
+        headlineMedium: DimataFonts.heading4(
+          fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: colors.textPrimaryDark,
+        ),
+        headlineSmall: DimataFonts.heading5(
+          fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: colors.textPrimaryDark,
+        ),
+        titleLarge: DimataFonts.heading6(
+          fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: colors.textPrimaryDark,
         ),
         bodyLarge: DimataFonts.bodyLarge(
           fontFamily: secondaryFontFamily ?? 'Open Sans',
-          color: Colors.white,
+          color: colors.textPrimaryDark,
         ),
         bodyMedium: DimataFonts.bodyMedium(
           fontFamily: secondaryFontFamily ?? 'Open Sans',
-          color: Colors.white,
+          color: colors.textPrimaryDark,
         ),
         bodySmall: DimataFonts.bodySmall(
           fontFamily: secondaryFontFamily ?? 'Open Sans',
-          color: Colors.white70,
+          color: colors.textSecondaryDark,
         ),
         labelLarge: DimataFonts.button(
           fontFamily: primaryFontFamily ?? 'Montserrat',
-          color: Colors.white,
+          color: colors.textPrimaryDark,
+        ),
+        labelMedium: DimataFonts.buttonSmall(
+          fontFamily: primaryFontFamily ?? 'Montserrat',
+          color: colors.textPrimaryDark,
         ),
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: primary,
-        foregroundColor: Colors.white,
+        backgroundColor: colors.surfaceDark,
+        foregroundColor: colors.textPrimaryDark,
         elevation: 0,
         centerTitle: true,
-        titleTextStyle: DimataFonts.heading3(
-          color: Colors.white,
+        titleTextStyle: DimataFonts.heading6(
+          color: colors.textPrimaryDark,
           fontFamily: primaryFontFamily ?? 'Montserrat',
         ),
+        iconTheme: IconThemeData(color: colors.textPrimaryDark),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          foregroundColor: colors.textPrimaryDark,
+          backgroundColor: colors.primaryDark,
+          textStyle: DimataFonts.button(
+            fontFamily: primaryFontFamily ?? 'Montserrat',
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 12,
+          ),
+        ),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: colors.primaryDark,
+          textStyle: DimataFonts.button(
+            fontFamily: primaryFontFamily ?? 'Montserrat',
+          ),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: colors.primaryDark,
+          textStyle: DimataFonts.button(
+            fontFamily: primaryFontFamily ?? 'Montserrat',
+          ),
+          side: BorderSide(color: colors.primaryDark),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 12,
+          ),
+        ),
+      ),
+      cardTheme: CardTheme(
+        color: colors.surfaceDark,
+        elevation: 1,
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      dividerTheme: DividerThemeData(
+        color: colors.textDisabledDark.withOpacity(0.2),
+        thickness: 1,
+        space: 1,
       ),
     );
+  }
+
+  /// Mendapatkan tema yang sesuai dengan mode saat ini
+  static ThemeData getAppTheme([ThemeMode? themeMode]) {
+    switch (themeMode ?? ThemeMode.system) {
+      case ThemeMode.light:
+        return light();
+      case ThemeMode.dark:
+        return dark();
+      case ThemeMode.system:
+      default:
+        final brightness = WidgetsBinding.instance.window.platformBrightness;
+        return brightness == Brightness.dark ? dark() : light();
+    }
   }
 }
