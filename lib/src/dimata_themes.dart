@@ -152,7 +152,7 @@ class DimataThemes {
           ),
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: colors.surfaceLight,
         elevation: 1,
         margin: EdgeInsets.zero,
@@ -293,7 +293,7 @@ class DimataThemes {
           ),
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: colors.surfaceDark,
         elevation: 1,
         margin: EdgeInsets.zero,
